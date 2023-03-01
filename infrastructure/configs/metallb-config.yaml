@@ -2,11 +2,11 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: home-pool
-  namespace: metallb
+  name: home-pool
+  namespace: metallb
 spec:
-  addresses:
-  - 10.0.0.30-10.0.0.49
+  addresses:
+    - 10.0.0.30-10.0.0.49
 ---
 apiVersion: metallb.io/v1beta2
 kind: BGPPeer
