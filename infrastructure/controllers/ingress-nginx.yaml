@@ -32,7 +32,5 @@ spec:
   values:
     controller:
       service:
-        annotations:
-          metallb.universe.tf/loadBalancerIPs: 10.0.1.10
         type: "LoadBalancer"
         externalTrafficPolicy: Local
