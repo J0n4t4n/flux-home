@@ -2,31 +2,37 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: repositories
+  name: metallb
   namespace: flux-system
 spec:
-  interval: 30m
-  path: ./repositories
+  path: ./apps/metallb/metallb/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: metallb
+      namespace: metallb
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: apps
+  name: metallb-config
   namespace: flux-system
 spec:
   dependsOn:
-    - name: repositories
-  interval: 30m
-  path: ./apps
+    - name: metallb
+  path: ./apps/metallb/metallb/config
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
