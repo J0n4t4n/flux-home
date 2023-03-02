@@ -25,6 +25,7 @@ spec:
             - --zone-id-filter=1af46885a182f9a6fe61dd067ea00ebf # (optional) limit to a specific zone.
             - --provider=cloudflare
             - --annotation-filter=external-dns.alpha.kubernetes.io/my-target in (external)
+            - --txt-owner-id=home
           env:
             - name: CF_API_TOKEN
               valueFrom:
