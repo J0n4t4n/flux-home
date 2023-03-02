@@ -5,8 +5,6 @@ metadata:
   name: infra-controllers-phase1
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: infra-metallb
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -49,7 +47,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infra-metallb
+    - name: infra-configs-phase1
   interval: 1h
   retryInterval: 1m
   timeout: 5m
@@ -67,7 +65,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infra-controllers-phase1
+    - name: infra-controllers-phase2
   interval: 1h
   retryInterval: 1m
   timeout: 5m
