@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: ingress-nginx-config
+    - name: ingress-nginx
   path: ./apps/cert-manager/cert-manager/app
   prune: true
   sourceRef:
