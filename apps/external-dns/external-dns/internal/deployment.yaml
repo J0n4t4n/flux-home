@@ -43,6 +43,7 @@ spec:
             - --rfc2136-kerberos-realm=ad.jsteuernagel.de
             - --rfc2136-tsig-axfr # needed to enable zone transfers, which is required for deletion of records.
             - --annotation-filter=external-dns.alpha.kubernetes.io/my-target in (internal)
+            - --txt-owner-id=home
           volumeMounts:
             - mountPath: /etc/krb5.conf
               name: kerberos-config-volume
