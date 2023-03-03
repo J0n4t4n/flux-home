@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blocky
+  namespace: blocky
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: blocky
+  template:
+    metadata:
+      labels:
+        app: blocky
+    spec:
+      replicas: 2
+      containers:
+        - name: blocky
+          image: spx01/blocky:v0.20
+          env:
+            - name: TZ
+              value: Europe/Berlin
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app
+      volumes:
+        - name: config-volume
+          configMap:
+            name: config.yml

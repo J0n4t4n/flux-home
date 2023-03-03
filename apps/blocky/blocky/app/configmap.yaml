@@ -1,0 +1,159 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config.yml
+  namespace: blocky
+data:
+  config.yml: |
+    upstream:
+      default:
+        - 10.0.0.80
+    blocking:
+      blackLists:
+        ads:
+          - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+          - https://v.firebog.net/hosts/AdguardDNS.txt
+          - https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
+          - https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+          - https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
+          - https://www.github.developerdan.com/hosts/lists/dating-services-extended.txt
+      whiteLists:
+        ads:
+          - |
+            # inline definition with YAML literal block scalar style
+            clients4.google.com #Google
+            clients2.google.com #Google
+            s.youtube.com #Youtube History
+            video-stats.l.google.com #Youtube History
+            android.clients.google.com #Google Play
+            0.client-channel.google.com #Google Play
+            2.android.pool.ntp.org #Google Play
+            reminders-pa.googleapis.com #Google Keep
+            firestore.googleapis.com #Google Keep
+            googleapis.l.google.com #GMail
+            a-msedge.net #Win 10 Update
+            slscr.update.microsoft.com #Win 10 Update
+            v10.vortex-win.data.microsoft.com #Win 10 Update
+            settings-win.data.microsoft.com #Win 10 Update
+            www.msftncsi.com #Win 10 Captive
+            msftncsi.com #Win 10 Captive
+            ipv6.msftncsi.com #Win 10 Captive
+            outlook.office365.com #Microsoft Web
+            products.office.com #Microsoft Web
+            c.s-microsoft.com #Microsoft Web
+            i.s-microsoft.com #Microsoft Web
+            login.live.com #Microsoft Web
+            login.microsoftonline.com #Microsoft Web
+            dl.delivery.mp.microsoft.com #Microsoft Store
+            geo-prod.do.dsp.mp.microsoft.com #Microsoft Store
+            displaycatalog.mp.microsoft.com #Microsoft Store
+            clientconfig.passport.net #Xbox Live
+            v10.events.data.microsoft.com #Xbox Live Achivements
+            v20.events.data.microsoft.com #Xbox Live Achivements
+            officeclient.microsoft.com #Microsoft Office
+            itunes.apple.com #Apple Music
+            s.mzstatic.com #Apple Music
+            appleid.apple.com #Apple ID
+            captive.apple.com #iOS
+            gsp1.apple.com #iOS
+            www.apple.com #iOS
+            www.appleiphonecell.com #iOS
+            gfwsl.geforce.com #NVIDIA Geforce Experience
+            cdn.optimizely.com #Origin CDN
+            s.shopify.com #Origin?
+            dl.dropboxusercontent.com #Dropbox
+            ns1.dropbox.com #Dropbox
+            ns2.dropbox.com #Dropbox
+            dl.google.com #Google Chrome
+            spclient.wg.spotify.com #Spotify
+            apresolve.spotify.com #Spotify
+            www.googleapis.com #Youtube App iOS
+            youtubei.googleapis.com #Youtube App iOS
+            oauthaccountmanager.googleapis.com #Youtube App iOS
+            sls.update.microsoft.com.akadns.net #Win 10 Update
+            fe3.delivery.dsp.mp.microsoft.com.nsatc.net #Win 10 Update
+            tlu.dl.delivery.mp.microsoft.com #Win 10 Update
+            connectivitycheck.android.com #Android Captive
+            clients3.google.com #Android Captive
+            connectivitycheck.gstatic.com #Android Captive
+            api-tv.spotify.com #Spotify TV
+            plex.tv #Plex
+            tvdb2.plex.tv #Plex
+            pubsub.plex.bz #Plex
+            proxy.plex.bz #Plex
+            proxy02.pop.ord.plex.bz #Plex
+            cpms.spop10.ams.plex.bz #Plex
+            meta-db-worker02.pop.ric.plex.bz #Plex
+            meta.plex.bz #Plex
+            tvthemes.plexapp.com.cdn.cloudflare.net #Plex
+            tvthemes.plexapp.com #Plex
+            106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services #Plex
+            meta.plex.tv #Plex
+            cpms35.spop10.ams.plex.bz #Plex
+            proxy.plex.tv #Plex
+            metrics.plex.tv #Plex
+            pubsub.plex.tv #Plex
+            status.plex.tv #Plex
+            www.plex.tv #Plex
+            node.plexapp.com #Plex
+            nine.plugins.plexapp.com #Plex
+            staging.plex.tv #Plex
+            app.plex.tv #Plex
+            o1.email.plex.tv #Plex
+            o2.sg0.plex.tv #Plex
+            dashboard.plex.tv #Plex
+            thetvdb.com #Plex
+            themoviedb.com #Plex
+            cloudsync-prod.s3.amazonaws.com #Origin Sync
+            styles.redditmedia.com #Reddit
+            www.redditstatic.com #Reddit
+            reddit.map.fastly.net #Reddit
+            www.redditmedia.com #Reddit
+            reddit-uploaded-media.s3-accelerate.amazonaws.com #Reddit
+            wa.me #WhatsApp
+            www.wa.me #WhatsApp
+            ud-chat.signal.org #Signal
+            chat.signal.org #Signal
+            storage.signal.org #Signal
+            signal.org #Signal
+            www.signal.org #Signal
+            updates2.signal.org #Signal
+            textsecure-service-whispersystems.org #Signal
+            giphy-proxy-production.whispersystems.org #Signal
+            cdn.signal.org #Signal
+            whispersystems-textsecure-attachments.s3-accelerate.amazonaws.com #Signal
+            d83eunklitikj.cloudfront.net #Signal
+            souqcdn.com #Signal
+            cms.souqcdn.com #Signal
+            api.directory.signal.org #Signal
+            contentproxy.signal.org #Signal
+            turn1.whispersystems.org #Signal
+            twitter.com #Twitter
+            upload.twitter.com #Twitter
+            api.twitter.com #Twitter
+            mobile.twitter.com #Twitter
+            concierge.analytics.console.aws.a2z.com #AWS Unified Search
+            cdn.discordapp.com #Discord
+            browser.pipe.aria.microsoft.com #Added from Query Log
+            nexusrules.officeapps.live.com #Added from Query Log
+            self.events.data.microsoft.com #Added from Query Log
+            mobile.pipe.aria.microsoft.com
+            assets.adobedtm.com #Toggo.de
+
+            /[a-z]\\.thumbs\\.redditmedia\\.com/ #Reddit
+            /(\\.|^)redd\\.it$/ #Reddit
+            /(\\.|^)reddit\\.com$/ #Reddit
+            /^whatsapp-cdn-shv-[0-9]{2}-[a-z]{3}[0-9]\\.fbcdn\\.net$/ #WhatsApp
+            /^((www|(w[0-9]\\.)?web|media((-[a-z]{3}|\\.[a-z]{4})[0-9]{1,2}-[0-9](\\.|-)(cdn|fna))?)\\.)?whatsapp\\.(com|net)$/ #WhatsApp
+            /(\\.|^)twimg\\.com$/ #Twitter
+            /beacons?\\d*\\.gvt\\d\\.com$/ #Google Meet
+            /*.blizzard.com/ #Battle.Net
+            /*.battle.net/ #Battle.Net
+            /(\\.|^)qualtrics\\.com$
+
+
+      clientGroupsBlock:
+        default:
+          - ads
+    port: 53
