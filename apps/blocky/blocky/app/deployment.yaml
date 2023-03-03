@@ -5,6 +5,7 @@ metadata:
   name: blocky
   namespace: blocky
 spec:
+  replicas: 2
   strategy:
     type: Recreate
   selector:
@@ -15,7 +16,6 @@ spec:
       labels:
         app: blocky
     spec:
-      replicas: 2
       containers:
         - name: blocky
           image: spx01/blocky:v0.20
