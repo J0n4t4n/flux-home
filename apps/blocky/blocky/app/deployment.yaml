@@ -19,12 +19,15 @@ spec:
       containers:
         - name: blocky
           image: spx01/blocky:v0.20
+          args:
+            - --config
+            - ./config/config.yml
           env:
             - name: TZ
               value: Europe/Berlin
           volumeMounts:
             - name: config-volume
-              mountPath: /app
+              mountPath: /app/config
       volumes:
         - name: config-volume
           configMap:
