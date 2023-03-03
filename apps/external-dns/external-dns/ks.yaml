@@ -2,10 +2,54 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: external-dns
+  name: external-dns-common
   namespace: flux-system
 spec:
+  path: ./apps/external-dns/external-dns/common
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: external-dns-external
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: external-dns-common
   path: ./apps/external-dns/external-dns/external
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: external-dns-internal
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: external-dns-common
+  path: ./apps/external-dns/external-dns/internal
   prune: true
   sourceRef:
     kind: GitRepository

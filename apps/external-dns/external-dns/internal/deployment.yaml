@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns-internal
+  namespace: external-dns
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns-internal
+  template:
+    metadata:
+      labels:
+        app: external-dns-internal
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: external-dns
+          image: k8s.gcr.io/external-dns/external-dns:v0.13.2
+          env:
+            - name: kerberos-user
+              valueFrom:
+                secretKeyRef:
+                  name: kerberos-credentials-secret
+                  key: kerberos-user
+            - name: kerberos-pass
+              valueFrom:
+                secretKeyRef:
+                  name: kerberos-credentials-secret
+                  key: kerberos-pass
+          args:
+            - --source=service
+            - --source=ingress
+            - --provider=rfc2136
+            - --rfc2136-gss-tsig
+            - --rfc2136-host=ws2022-dc2.ad.jsteuernagel.de
+            - --rfc2136-port=53
+            - --rfc2136-zone=k8s.jsteuernagel.de
+            - --rfc2136-kerberos-username=$(kerberos-user)
+            - --rfc2136-kerberos-password=$(kerberos-pass)
+            - --rfc2136-kerberos-realm=ad.jsteuernagel.de
+            - --rfc2136-tsig-axfr # needed to enable zone transfers, which is required for deletion of records.
+            - --annotation-filter=external-dns.alpha.kubernetes.io/my-target in (internal)
+          volumeMounts:
+            - mountPath: /etc/krb5.conf
+              name: kerberos-config-volume
+              subPath: krb5.conf
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: krb5.conf
+          name: kerberos-config-volume
