@@ -4,3 +4,10 @@ kind: Kustomization
 resources:
   - https://github.com/kubevirt/kubevirt/releases/download/v0.59.0/kubevirt-operator.yaml
   - https://github.com/kubevirt/kubevirt/releases/download/v0.59.0/kubevirt-cr.yaml
+patchesStrategicMerge:
+  - |
+    $patch: delete
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: kubevirt
