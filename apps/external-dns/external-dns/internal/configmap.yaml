@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: krb5.conf
+  namespace: external-dns
 data:
   krb5.conf: |
     [logging]
