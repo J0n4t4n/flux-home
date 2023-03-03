@@ -21,9 +21,9 @@ spec:
     ingress:
       enabled: true
       ingressClassName: nginx
-      host: longhorn.home.jsteuernagel.de
+      host: longhorn.k8s.jsteuernagel.de
       tls: true
-      tlsSecret: longhorn-home-jsteuernagel-de-tls
+      tlsSecret: longhorn-k8s-jsteuernagel-de-tls
       annotations:
         external-dns.alpha.kubernetes.io/my-target: internal
         cert-manager.io/cluster-issuer: letsencrypt-prod
