@@ -8,10 +8,10 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: garage
+      chart: ./script/helm/garage
       version: "*"
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: garage
         namespace: flux-system
       interval: 12h
