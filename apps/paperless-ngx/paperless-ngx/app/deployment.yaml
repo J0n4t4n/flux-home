@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-ngx
+  namespace: paperless-ngx
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: paperless-ngx
+  template:
+    metadata:
+      labels:
+        app: paperless-ngx
+    spec:
+      containers:
+        - name: paperless-ngx
+          image: ghcr.io/paperless-ngx/paperless-ngx:latest
+          env:
+            - name: PAPERLESS_REDIS
+              value: redis://paperless-ngx-redis:6379
+            - name: PAPERLESS_DBENGINE
+              value: mariadb
+            - name: PAPERLESS_DBHOST
+              value: paperless-ngx-mariadb
+            - name: PAPERLESS_DBUSER
+              value: paperless
+            - name: PAPERLESS_DBPASS
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-ngx-mariadb
+                  key: password
+            - name: PAPERLESS_DBPORT
+              value: "3306"
+          ports:
+            - name: paperless-ngx
+              containerPort: 8000
+              hostPort: 8000
+          volumeMounts:
+            - name: data
+              mountPath: /usr/src/paperless/data
+            - name: media
+              mountPath: /usr/src/paperless/media
+          livenessProbe:
+            httpGet:
+              path: /
+              port: paperless-ngx
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            failureThreshold: 5
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: paperless-ngx-data
+        - name: media
+          persistentVolumeClaim:
+            claimName: paperless-ngx-media
