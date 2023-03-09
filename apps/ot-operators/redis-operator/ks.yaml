@@ -5,7 +5,7 @@ metadata:
   name: redis-operator
   namespace: flux-system
 spec:
-  path: ./apps/redis-operator/redis-operator/app
+  path: ./apps/ot-operators/redis-operator/app
   prune: true
   sourceRef:
     kind: GitRepository
