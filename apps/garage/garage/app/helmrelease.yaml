@@ -37,7 +37,7 @@ spec:
           className: "nginx"
           annotations:
             external-dns.alpha.kubernetes.io/my-target: external
-            external-dns.alpha.kubernetes.io/target: home.jsteuernagel.de
+            external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
             cert-manager.io/cluster-issuer: letsencrypt-prod
           hosts:
             - host: s3-api.jsteuernagel.de
