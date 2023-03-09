@@ -25,6 +25,7 @@ spec:
             - name: DB_PASS
               valueFrom:
                 secretKeyRef:
+                  name: photoview-mariadb
                   key: password
             - name: PHOTOVIEW_MYSQL_URL
               value: photoview:$(DB_PASS)@tcp(photoview-mariadb)/photoview
