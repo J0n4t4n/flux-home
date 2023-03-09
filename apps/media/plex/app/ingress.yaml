@@ -34,6 +34,7 @@ metadata:
       gzip_types text/plain text/css text/xml application/xml text/javascript application/x-javascript image/svg+xml;
       gzip_disable "MSIE [1-6]\.";
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - plex.jsteuernagel.de
