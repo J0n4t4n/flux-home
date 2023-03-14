@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: metallb-config
+    - name: cilium-config
   path: ./apps/ingress-nginx/ingress-nginx/app
   prune: true
   sourceRef:
