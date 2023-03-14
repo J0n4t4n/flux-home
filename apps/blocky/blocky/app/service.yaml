@@ -5,10 +5,11 @@ metadata:
   name: blocky-service
   namespace: blocky
   annotations:
-    io.cilium/lb-ipam-ips: 10.0.1.11
+    io.cilium/lb-ipam-ips: 10.0.1.11,fd48:e380:751a:1::11
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
+  ipFamilyPolicy: RequireDualStack
   selector:
     app: blocky
   ports:
