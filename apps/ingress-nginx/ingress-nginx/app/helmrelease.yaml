@@ -23,3 +23,4 @@ spec:
           io.cilium/lb-ipam-ips: 10.0.1.10
         type: "LoadBalancer"
         externalTrafficPolicy: Local
+        ipFamilyPolicy: RequireDualStack
