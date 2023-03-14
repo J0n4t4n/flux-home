@@ -6,4 +6,4 @@ metadata:
 spec:
   cidrs:
     - cidr: "10.0.1.0/24"
-    - cidr: "fd48:e380:751a:1::1/64"
+    - cidr: "fd48:e380:751a:1::/64"

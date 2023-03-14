@@ -20,7 +20,7 @@ spec:
       replicaCount: 2
       service:
         annotations:
-          io.cilium/lb-ipam-ips: 10.0.1.10
+          io.cilium/lb-ipam-ips: 10.0.1.10,fd48:e380:751a:1::10
         type: "LoadBalancer"
         externalTrafficPolicy: Local
         ipFamilyPolicy: RequireDualStack
