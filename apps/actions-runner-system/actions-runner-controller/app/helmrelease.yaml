@@ -15,11 +15,4 @@ spec:
         name: actions-runner-controller
         namespace: flux-system
       interval: 12h
-  valuesFrom:
-    - kind: Secret
-      name: github-token
-      valuesKey: token
-      targetPath: authSecret.github_token
   values:
-    authSecret:
-      create: true
