@@ -21,3 +21,5 @@ spec:
       valuesKey: token
       targetPath: authSecret.github_token
   values:
+    authSecret:
+      create: true
