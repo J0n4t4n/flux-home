@@ -16,3 +16,21 @@ spec:
         namespace: flux-system
       interval: 12h
   values:
+    githubWebhookServer:
+      enabled: true
+      ingress:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+          external-dns.alpha.kubernetes.io/my-target: external
+          external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
+        hosts:
+          - host: gharc.jsteuernagel.de
+            paths:
+              - path: /actions-runner-controller-github-webhook-server
+                pathType: Prefix
+        tls:
+          - hosts:
+              - gharc.jsteuernagel.de
+            secretName: gharc-jsteuernagel-de-tls
+        ingressClassName: nginx
