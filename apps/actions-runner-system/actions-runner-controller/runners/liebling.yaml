@@ -1,0 +1,25 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: liebling-runners
+spec:
+  template:
+    spec:
+      repository: J0n4t4n/liebling
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: liebling-runners
+spec:
+  minReplicas: 1
+  maxReplicas: 2
+  scaleTargetRef:
+    kind: RunnerDeployment
+    # # In case the scale target is RunnerSet:
+    # kind: RunnerSet
+    name: liebling-runners
+  scaleUpTriggers:
+    - githubEvent:
+        workflowJob: {}
+      duration: "30m"

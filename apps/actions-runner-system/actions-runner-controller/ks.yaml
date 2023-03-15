@@ -22,3 +22,21 @@ spec:
     provider: sops
     secretRef:
       name: sops-gpg
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: actions-runner-runners
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: actions-runner-controller
+  path: ./apps/actions-runner-system/actions-runner-controller/runners
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
