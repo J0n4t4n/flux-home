@@ -5,6 +5,8 @@ metadata:
   name: actions-runner-controller
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: ingress-nginx
   path: ./apps/actions-runner-system/actions-runner-controller/app
   prune: true
   sourceRef:

@@ -5,6 +5,8 @@ metadata:
   name: external-dns-common
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cilium-config
   path: ./apps/external-dns/external-dns/common
   prune: true
   sourceRef:

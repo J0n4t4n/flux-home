@@ -5,6 +5,8 @@ metadata:
   name: plex
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: longhorn
   path: ./apps/plex/plex/app
   prune: true
   sourceRef:

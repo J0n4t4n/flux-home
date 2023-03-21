@@ -5,6 +5,8 @@ metadata:
   name: mariadb-operator
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: longhorn
   path: ./apps/mariadb-operator/mariadb-operator/app
   prune: true
   sourceRef:
