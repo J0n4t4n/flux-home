@@ -1,6 +1,4 @@
 ---
-apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: intel-gpu-plugin
-  namespace: kube-system
+- op: add
+  path: /metadata/namespace
+  value: kube-system
