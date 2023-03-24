@@ -16,6 +16,17 @@ spec:
       labels:
         app: plex
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - ananke
+                      - nyx
       containers:
         - name: plex
           image: plexinc/pms-docker
