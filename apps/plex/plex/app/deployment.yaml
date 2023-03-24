@@ -16,17 +16,6 @@ spec:
       labels:
         app: plex
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              preference:
-                matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - ananke
-                      - nyx
       containers:
         - name: plex
           image: plexinc/pms-docker
@@ -48,8 +37,9 @@ spec:
               mountPath: /transcode
             - name: media
               mountPath: /data
-            - name: quicksync
-              mountPath: /dev/dri
+          requests:
+            limits:
+              gpu.intel.com/i915: 1
           livenessProbe:
             httpGet:
               path: /identity
@@ -69,6 +59,3 @@ spec:
             server: 10.0.0.11
             path: /tank/media
             readOnly: true
-        - name: quicksync
-          hostPath:
-            path: /dev/dri
