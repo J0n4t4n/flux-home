@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./kube-vip/ks.yaml
   - ./cilium/ks.yaml
+  - ./intel-device-plugins/ks.yaml
