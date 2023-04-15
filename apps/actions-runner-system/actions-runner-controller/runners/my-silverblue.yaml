@@ -52,6 +52,7 @@ spec:
       repository: J0n4t4n/my-silverblue
       containerMode: kubernetes
       serviceAccountName: runner-sa
+      automountServiceAccountToken: false
       workVolumeClaimTemplate:
         storageClassName: longhorn
         accessModes:
@@ -59,7 +60,31 @@ spec:
         resources:
           requests:
             storage: 5Gi
-      env: []
+      containers:
+        - name: runner
+          volumeMounts:
+            - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+              name: kube-api-access
+              readOnly: true
+      volumes:
+        - name: kube-api-access
+          projected:
+            defaultMode: 420
+            sources:
+              - serviceAccountToken:
+                  expirationSeconds: 3607
+                  path: token
+              - configMap:
+                  items:
+                    - key: ca.crt
+                      path: ca.crt
+                  name: kube-root-ca.crt
+              - downwardAPI:
+                  items:
+                    - fieldRef:
+                        apiVersion: v1
+                        fieldPath: metadata.namespace
+                      path: namespace
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
