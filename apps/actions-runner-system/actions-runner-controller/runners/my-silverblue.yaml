@@ -55,7 +55,7 @@ spec:
       workVolumeClaimTemplate:
         storageClassName: longhorn
         accessModes:
-          - ReadWriteMany
+          - ReadWriteOnce
         resources:
           requests:
             storage: 5Gi
