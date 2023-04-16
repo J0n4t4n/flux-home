@@ -1,0 +1,40 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: weave-gitops
+  namespace: flux-system
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: weave-gitops
+      version: "*"
+      sourceRef:
+        kind: HelmRepository
+        name: weave-gitops
+        namespace: flux-system
+      interval: 12h
+  values:
+    adminUser:
+      create: true
+      createSecret: false
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        external-dns.alpha.kubernetes.io/my-target: internal
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/16
+      hosts:
+        - host: flux.k8s.jsteuernagel.de
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: flux-k8s-jsteuernagel-de-tls
+          hosts:
+            - flux.k8s.jsteuernagel.de
+    rbac:
+      create: true
+      impersonationResourceNames: ["admin"]
