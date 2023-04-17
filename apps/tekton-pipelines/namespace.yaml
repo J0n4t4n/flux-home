@@ -5,3 +5,6 @@ metadata:
   name: tekton-pipelines
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
+    app.kubernetes.io/instance: default
+    app.kubernetes.io/part-of: tekton-pipelines
+    pod-security.kubernetes.io/enforce: restricted

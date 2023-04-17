@@ -9,3 +9,13 @@ resources:
   - https://storage.googleapis.com/tekton-releases/dashboard/latest/release.yaml
   - ingress.yaml
 #  - https://api.hub.tekton.dev/v1/resource/tekton/task/github-set-status/0.3/raw
+
+patches:
+  - target:
+      kind: Namespace
+    patch: |
+      $patch: delete
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: tekton-pipelines
