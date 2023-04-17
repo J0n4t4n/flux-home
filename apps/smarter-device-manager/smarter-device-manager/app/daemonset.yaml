@@ -48,6 +48,8 @@ spec:
               mountPath: /dev
             - name: sys-dir
               mountPath: /sys
+            - name: config
+              mountPath: /root/config
       volumes:
         - name: device-plugin
           hostPath:
@@ -58,4 +60,7 @@ spec:
         - name: sys-dir
           hostPath:
             path: /sys
+        - name: config
+          configMap:
+            name: smarter-device-manager
       terminationGracePeriodSeconds: 30
