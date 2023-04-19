@@ -80,6 +80,7 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: my-silverblue-template
+  namespace: tekton-tasks
 spec:
   params:
     - name: githubRepositoryUrl
@@ -126,6 +127,7 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
 metadata:
   name: github-binding
+  namespace: tekton-tasks
 spec:
   params:
     - name: githubRef
@@ -139,6 +141,7 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: Trigger
 metadata:
   name: github-trigger
+  namespace: tekton-tasks
 spec:
   interceptors:
     - ref:
@@ -164,6 +167,7 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: github-listener
+  namespace: tekton-tasks
 spec:
   serviceAccountName: tekton-triggers-sa
   triggers:
