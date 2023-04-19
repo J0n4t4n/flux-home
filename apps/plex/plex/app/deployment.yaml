@@ -37,7 +37,7 @@ spec:
               mountPath: /transcode
             - name: media
               mountPath: /data
-          requests:
+          resources:
             limits:
               gpu.intel.com/i915: 1
           livenessProbe:
