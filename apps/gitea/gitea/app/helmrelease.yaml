@@ -59,7 +59,7 @@ spec:
           securityProtocol: unencrypted
           host: "ad.jsteuernagel.de"
           port: "389"
-          userSearchBase: ou=Users,dc=example,dc=com
+          userSearchBase: OU=Users,OU=JS,DC=ad,DC=jsteuernagel,DC=de
           userFilter: sAMAccountName=%s
           adminFilter: CN=Gitea Admin,OU=Groups,OU=JS,DC=ad,DC=jsteuernagel,DC=de
           emailAttribute: mail
