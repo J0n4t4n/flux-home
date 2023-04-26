@@ -53,7 +53,7 @@ spec:
           FROM: gitea@jsteuernagel.de
           MAILER_TYPE: smtp
           SMTP_ADDR: mail.jsteuernagel.de
-          SMTP_PORT: 587
+          SMTP_PORT: 465
           IS_TLS_ENABLED: true
           USER: gitea@jsteuernagel.de
       additionalConfigFromEnvs:
