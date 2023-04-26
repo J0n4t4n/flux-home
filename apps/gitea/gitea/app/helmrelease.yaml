@@ -48,11 +48,24 @@ spec:
           HOST: gitea-mariadb:3306
           NAME: gitea
           USER: gitea
+        mailer:
+          ENABLED: true
+          FROM: gitea@jsteuernagel.de
+          MAILER_TYPE: smtp
+          SMTP_ADDR: mail.jsteuernagel.de
+          SMTP_PORT: 587
+          IS_TLS_ENABLED: true
+          USER: gitea@jsteuernagel.de
       additionalConfigFromEnvs:
         - name: ENV_TO_INI__DATABASE__PASSWD
           valueFrom:
             secretKeyRef:
               name: gitea-mariadb-secret
+              key: password
+        - name: ENV_TO_INI__MAILER__PASSWD
+          valueFrom:
+            secretKeyRef:
+              name: gitea-smtp-secret
               key: password
       ldap:
         - name: AD
