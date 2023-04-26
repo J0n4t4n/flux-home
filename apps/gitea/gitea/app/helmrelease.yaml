@@ -43,8 +43,6 @@ spec:
       admin:
         existingSecret: gitea-admin-secret
       config:
-        log:
-          level: debug
         database:
           DB_TYPE: mysql
           HOST: gitea-mariadb:3306
@@ -58,7 +56,7 @@ spec:
               key: password
       ldap:
         - name: AD
-          securityProtocol: unencrypted
+          securityProtocol: ldaps
           skipTlsVerify: true
           host: "ad.jsteuernagel.de"
           port: "636"
