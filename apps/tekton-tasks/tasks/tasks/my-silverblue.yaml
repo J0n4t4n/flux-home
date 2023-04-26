@@ -115,9 +115,9 @@ spec:
           - name: githubRef
             value: "$(tt.params.githubRef)"
           - name: registry
-            value: ghcr.io
+            value: gitea.jsteuernagel.de
           - name: imageName
-            value: j0n4t4n/my-silverblue
+            value: jonatan/my-silverblue
           - name: imageTag
             value: main
         podTemplate:
