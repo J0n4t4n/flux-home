@@ -67,5 +67,5 @@ spec:
           usernameAttribute: CN
           publicSSHKeyAttribute: sshPublicKeys
 
-    postgres:
+    postgresql:
       enabled: false
