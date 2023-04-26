@@ -45,16 +45,16 @@ spec:
       config:
         database:
           DB_TYPE: mysql
-          HOST: gitea-mariadb
+          HOST: gitea-mariadb:3306
           NAME: gitea
-          USER: root
+          USER: gitea
           SCHEMA: gitea
       additionalConfigFromEnvs:
         - name: ENV_TO_INI__DATABASE__PASSWD
           valueFrom:
             secretKeyRef:
               name: gitea-mariadb-secret
-              key: root-password
+              key: password
       ldap:
         - name: AD
           securityProtocol: unencrypted

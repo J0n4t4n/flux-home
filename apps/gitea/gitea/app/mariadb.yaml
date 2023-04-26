@@ -10,6 +10,10 @@ spec:
     key: root-password
 
   database: gitea
+  username: gitea
+  passwordSecretKeyRef:
+    name: gitea-mariadb-secret
+    key: password
 
   image:
     repository: mariadb
