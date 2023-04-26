@@ -48,7 +48,6 @@ spec:
           HOST: gitea-mariadb:3306
           NAME: gitea
           USER: gitea
-          SCHEMA: gitea
       additionalConfigFromEnvs:
         - name: ENV_TO_INI__DATABASE__PASSWD
           valueFrom:
