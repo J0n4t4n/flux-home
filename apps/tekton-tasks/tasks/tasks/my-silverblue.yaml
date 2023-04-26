@@ -124,15 +124,16 @@ spec:
         podTemplate:
           automountServiceAccountToken: false
           affinity:
-            preferredDuringSchedulingIgnoredDuringExecution:
-              - weight: 1
-                preference:
-                  matchExpressions:
-                    - key: kubernetes.io/hostname
-                      operator: In
-                      values:
-                        - ananke
-                        - nyx
+            nodeAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+                - weight: 1
+                  preference:
+                    matchExpressions:
+                      - key: kubernetes.io/hostname
+                        operator: In
+                        values:
+                          - ananke
+                          - nyx
 ---
 apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerBinding
