@@ -1,0 +1,35 @@
+---
+apiVersion: mariadb.mmontes.io/v1alpha1
+kind: MariaDB
+metadata:
+  name: gitea-mariadb
+  namespace: gitea
+spec:
+  rootPasswordSecretKeyRef:
+    name: gitea-mariadb-secret
+    key: root-password
+
+  database: gitea
+
+  image:
+    repository: mariadb
+    tag: "10.7.4"
+    pullPolicy: IfNotPresent
+
+  port: 3306
+
+  volumeClaimTemplate:
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: longhorn
+    accessModes:
+      - ReadWriteOnce
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi

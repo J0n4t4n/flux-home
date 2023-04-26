@@ -1,0 +1,72 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitea
+  namespace: gitea
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: gitea
+      version: ">=8.0.0 <9.0.0"
+      sourceRef:
+        kind: HelmRepository
+        name: gitea
+        namespace: flux-system
+      interval: 12h
+  values:
+    image:
+      rootless: true
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        external-dns.alpha.kubernetes.io/my-target: external
+        external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
+      hosts:
+        - host: gitea.jsteuernagel.de
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - gitea.jsteuernagel.de
+          secretName: gitea-jsteuernagel-de-tls
+
+    persistence:
+      size: 10Gi
+      storageClass: longhorn
+
+    gitea:
+      admin:
+        existingSecret: gitea-admin-secret
+      config:
+        database:
+          DB_TYPE: mysql
+          HOST: gitea-mariadb
+          NAME: gitea
+          USER: root
+          SCHEMA: gitea
+      additionalConfigFromEnvs:
+        - name: ENV_TO_INI__DATABASE__PASSWD
+          valueFrom:
+            secretKeyRef:
+              name: gitea-mariadb-secret
+              key: root-password
+      ldap:
+        - name: AD
+          securityProtocol: unencrypted
+          host: "ad.jsteuernagel.de"
+          port: "389"
+          userSearchBase: ou=Users,dc=example,dc=com
+          userFilter: sAMAccountName=%s
+          adminFilter: CN=Gitea Admin,OU=Groups,OU=JS,DC=ad,DC=jsteuernagel,DC=de
+          emailAttribute: mail
+          existingSecret: gitea-ldap-secret
+          usernameAttribute: CN
+          publicSSHKeyAttribute: sshPublicKeys
+
+    postgres:
+      enabled: false
