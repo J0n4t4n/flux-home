@@ -66,7 +66,8 @@ spec:
     - name: push-container
       image: quay.io/buildah/stable:latest
       command: ["buildah"]
-      args: ["push", "ghcr.io/j0n4t4n/my-silverblue:main"]
+      args:
+        ["push", "$(params.registry)/$(params.imageName):$(params.imageTag)"]
       resources:
         limits:
           smarter-devices/fuse: "1"
