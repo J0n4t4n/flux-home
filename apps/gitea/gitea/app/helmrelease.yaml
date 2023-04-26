@@ -43,6 +43,8 @@ spec:
       admin:
         existingSecret: gitea-admin-secret
       config:
+        log:
+          level: debug
         database:
           DB_TYPE: mysql
           HOST: gitea-mariadb:3306
@@ -57,14 +59,17 @@ spec:
       ldap:
         - name: AD
           securityProtocol: unencrypted
+          skipTlsVerify: true
           host: "ad.jsteuernagel.de"
-          port: "389"
-          userSearchBase: OU=Users,OU=JS,DC=ad,DC=jsteuernagel,DC=de
-          userFilter: sAMAccountName=%s
-          adminFilter: CN=Gitea Admin,OU=Groups,OU=JS,DC=ad,DC=jsteuernagel,DC=de
-          emailAttribute: mail
+          port: "636"
+          userSearchBase: "OU=Users,OU=JS,DC=ad,DC=jsteuernagel,DC=de"
+          userFilter: "(&(objectClass=user)(sAMAccountName=%s))"
+          adminFilter: "(&(memberOf=CN=Gitea Admin,OU=Groups,OU=JS,DC=ad,DC=jsteuernagel,DC=de))"
           existingSecret: gitea-ldap-secret
           usernameAttribute: CN
+          firstnameAttribute: givenName
+          surnameAttribute: sn
+          emailAttribute: mail
           publicSSHKeyAttribute: sshPublicKeys
 
     postgresql:
