@@ -25,6 +25,7 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         external-dns.alpha.kubernetes.io/my-target: external
         external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
+        nginx.ingress.kubernetes.io/proxy-body-size: 4096m
       hosts:
         - host: gitea.jsteuernagel.de
           paths:
