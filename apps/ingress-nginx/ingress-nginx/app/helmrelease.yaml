@@ -25,4 +25,4 @@ spec:
         externalTrafficPolicy: Local
         ipFamilyPolicy: RequireDualStack
     tcp:
-      22: "gitea/gitea-ssh:22"
+      "22": "gitea/gitea-ssh:22"
