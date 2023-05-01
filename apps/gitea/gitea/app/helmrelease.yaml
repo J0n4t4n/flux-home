@@ -79,7 +79,7 @@ spec:
           host: "ad.jsteuernagel.de"
           port: "636"
           userSearchBase: "OU=Users,OU=JS,DC=ad,DC=jsteuernagel,DC=de"
-          userFilter: "(&(objectClass=user)(sAMAccountName=%s))"
+          userFilter: "(&(objectClass=user)(sAMAccountName=%s)(!(distinguishedName:=%Service User%)))"
           adminFilter: "(memberOf=CN=Gitea Admin,OU=Groups,OU=JS,DC=ad,DC=jsteuernagel,DC=de)"
           existingSecret: gitea-ldap-secret
           usernameAttribute: sAMAccountName
