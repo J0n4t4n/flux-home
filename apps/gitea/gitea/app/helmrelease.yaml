@@ -57,6 +57,10 @@ spec:
           SMTP_PORT: 465
           IS_TLS_ENABLED: true
           USER: gitea@jsteuernagel.de
+        federation:
+          ENABLED: true
+        service:
+          DISABLE_REGISTRATION: true
       additionalConfigFromEnvs:
         - name: ENV_TO_INI__DATABASE__PASSWD
           valueFrom:
@@ -76,7 +80,7 @@ spec:
           port: "636"
           userSearchBase: "OU=Users,OU=JS,DC=ad,DC=jsteuernagel,DC=de"
           userFilter: "(&(objectClass=user)(sAMAccountName=%s))"
-          adminFilter: "(&(memberOf=CN=Gitea Admin,OU=Groups,OU=JS,DC=ad,DC=jsteuernagel,DC=de))"
+          adminFilter: "(memberOf=CN=Gitea Admin,OU=Groups,OU=JS,DC=ad,DC=jsteuernagel,DC=de)"
           existingSecret: gitea-ldap-secret
           usernameAttribute: CN
           firstnameAttribute: givenName
