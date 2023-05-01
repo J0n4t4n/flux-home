@@ -82,7 +82,7 @@ spec:
           userFilter: "(&(objectClass=user)(sAMAccountName=%s))"
           adminFilter: "(memberOf=CN=Gitea Admin,OU=Groups,OU=JS,DC=ad,DC=jsteuernagel,DC=de)"
           existingSecret: gitea-ldap-secret
-          usernameAttribute: CN
+          usernameAttribute: sAMAccountName
           firstnameAttribute: givenName
           surnameAttribute: sn
           emailAttribute: mail
