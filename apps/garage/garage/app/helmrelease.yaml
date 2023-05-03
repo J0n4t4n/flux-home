@@ -52,3 +52,4 @@ spec:
             - secretName: s3-jsteuernagel-de-tls
               hosts:
                 - s3.jsteuernagel.de
+                - "*.s3.jsteuernagel.de"
