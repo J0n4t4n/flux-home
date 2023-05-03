@@ -18,6 +18,11 @@ spec:
   values:
     garage:
       replicationMode: "3"
+      s3:
+        api:
+          rootDomain: ".s3.jsteuernagel.de"
+        web:
+          rootDomain: ".web.jsteuernagel.de"
 
     deployment:
       replicaCount: 3
