@@ -53,3 +53,19 @@ spec:
               hosts:
                 - s3.jsteuernagel.de
                 - "*.s3.jsteuernagel.de"
+        web:
+          enabled: true
+          className: "nginx"
+          annotations:
+            external-dns.alpha.kubernetes.io/my-target: external
+            external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+          hosts:
+            - host: "*.web.jsteuernagel.de"
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - secretName: web-jsteuernagel-de-tls
+              hosts:
+                - "*.web.jsteuernagel.de"
