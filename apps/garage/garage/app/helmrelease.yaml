@@ -40,7 +40,11 @@ spec:
             external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
             cert-manager.io/cluster-issuer: letsencrypt-prod
           hosts:
-            - host: s3.jsteuernagel.de
+            - host: "s3.jsteuernagel.de"
+              paths:
+                - path: /
+                  pathType: Prefix
+            - host: "*.s3.jsteuernagel.de"
               paths:
                 - path: /
                   pathType: Prefix
