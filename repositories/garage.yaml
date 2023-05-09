@@ -6,10 +6,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 24h
-  url: ssh://git@git.deuxfleurs.fr/jonatan/garage
-  #url: https://git.deuxfleurs.fr/Deuxfleurs/garage
-  secretRef:
-    name: garage-auth
+  #url: ssh://git@git.deuxfleurs.fr/jonatan/garage
+  url: https://git.deuxfleurs.fr/Deuxfleurs/garage
+  #secretRef:
+  #  name: garage-auth
   ref:
     branch: main
   ignore: |
