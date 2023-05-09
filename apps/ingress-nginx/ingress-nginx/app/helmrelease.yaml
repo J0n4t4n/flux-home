@@ -23,6 +23,6 @@ spec:
           io.cilium/lb-ipam-ips: 10.0.1.10,fd48:e380:751a:1::10
         type: "LoadBalancer"
         externalTrafficPolicy: Local
-        ipFamilyPolicy: RequireDualStack
+        ipFamilyPolicy: PreferDualStack
     tcp:
       "22": "gitea/gitea-ssh:22"
