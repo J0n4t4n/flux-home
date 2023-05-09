@@ -47,6 +47,10 @@ spec:
           s3:
             bucket_name: mimir-ruler
 
+    store_gateway:
+      persistentVolume:
+        storageClass: local-path
+
     metaMonitoring:
       dashboards:
         enabled: true
