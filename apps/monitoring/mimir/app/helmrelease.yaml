@@ -47,6 +47,15 @@ spec:
           s3:
             bucket_name: mimir-ruler
 
+    alertmanager:
+      persistentVolume:
+        storageClass: local-path
+    compactor:
+      persistentVolume:
+        storageClass: local-path
+    ingester:
+      persistentVolume:
+        storageClass: local-path
     store_gateway:
       persistentVolume:
         storageClass: local-path
