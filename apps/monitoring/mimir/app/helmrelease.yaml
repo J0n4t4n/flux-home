@@ -56,9 +56,6 @@ spec:
       grafanaAgent:
         enabled: true
         installOperator: true
-        metrics:
-          additionalRemoteWriteConfigs:
-            - url: "http://mimir-nginx.monitoring.svc:80/api/v1/push"
 
     gateway:
       enabledNonEnterprise: true
