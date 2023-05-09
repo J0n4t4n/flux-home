@@ -75,9 +75,9 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
+          external-dns.alpha.kubernetes.io/my-target: internal
           cert-manager.io/cluster-issuer: letsencrypt-prod
-          external-dns.alpha.kubernetes.io/my-target: external
-          external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
+          nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/16
         hosts:
           - host: mimir.k8s.jsteuernagel.de
             paths:
