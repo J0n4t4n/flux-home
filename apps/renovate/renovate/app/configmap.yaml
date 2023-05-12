@@ -8,7 +8,6 @@ data:
   config.json: |-
     {
       "repositories": ["J0n4t4n/flux-home"],
-      "dryRun" : "true",
       "flux": {
         "fileMatch": ["\\.yaml$"]
       }

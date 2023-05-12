@@ -14,7 +14,7 @@ spec:
           containers:
             - image: renovate/renovate:35.14.4
               name: renovate-bot
-              env: # For illustration purposes, please use secrets.
+              env:
                 - name: RENOVATE_PLATFORM
                   value: "github"
                 - name: RENOVATE_AUTODISCOVER
