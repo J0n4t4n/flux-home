@@ -1,4 +1,4 @@
-# Flux-Home
+# <img src="https://github.com/J0n4t4n/flux-home/assets/5023871/34af3d3f-8d8f-4a67-9c5e-6de8aa696916" width="48"> Flux-Home
 
 Welcome to the **flux-home** repository! This repository contains the Kubernetes manifests for my K3s Kubernetes cluster at home. It enables me to manage my cluster efficiently and automate the deployment of applications using various tools and services.
 
