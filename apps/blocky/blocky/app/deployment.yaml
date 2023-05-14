@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: blocky
-          image: spx01/blocky:v0.20
+          image: spx01/blocky:v0.21
           args:
             - --config
             - ./config/config.yml
