@@ -29,6 +29,14 @@ spec:
               name: password
             - mountPath: /mosquitto/data
               name: data
+          env:
+            - name: PUID
+              value: 1883
+            - name: PGID
+              value: 1883
+          securityContext:
+            runAsUser: 1883
+            runAsGroup: 1883
       volumes:
         - name: config
           configMap:
