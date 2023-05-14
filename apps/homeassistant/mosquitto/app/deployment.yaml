@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto
+  namespace: homeassistant
+spec:
+  selector:
+    matchLabels:
+      app: mosquitto
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+    spec:
+      strategy:
+        type: Recreate
+      containers:
+        - name: mosquitto
+          image: eclipse-mosquitto:2.0.15-openssl
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - mountPath: /mosquitto/config
+              readOnly: true
+              name: config
+            - mountPath: /mosquitto/password
+              readOnly: true
+              name: password
+            - mountPath: /mosquitto/data
+              name: data
+      volumes:
+        - name: config
+          configMap:
+            name: mosquitto-config
+        - name: password
+          secret:
+            secretName: mosquitto-passwordfile
+        - name: data
+          persistentVolumeClaim:
+            claimName: mosquitto-data
