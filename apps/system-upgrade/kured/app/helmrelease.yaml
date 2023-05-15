@@ -30,7 +30,7 @@ spec:
       endTime: "6:00" # only reboot before this time of day (default "23:59")
       forceReboot: false # force a reboot even if the drain fails or times out (default: false)
       rebootCommand: "/bin/systemctl reboot" # command to run when a reboot is required by the sentinel
-      rebootDelay: "30" # add a delay after drain finishes but before the reboot command is issued
+      rebootDelay: "30s" # add a delay after drain finishes but before the reboot command is issued
       notifyUrl: "$(notifyHookUrl)" # notification URL with the syntax as follows: https://containrrr.dev/shoutrrr/services/overview/
       timeZone: "Europe/Berlin" # time-zone to use (valid zones from "time" golang package)
       annotateNodes: true # enable 'weave.works/kured-reboot-in-progress' and 'weave.works/kured-most-recent-reboot-needed' node annotations to signify kured reboot operations
