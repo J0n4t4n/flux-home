@@ -7,8 +7,5 @@ metadata:
 data:
   config.json: |-
     {
-      "repositories": ["J0n4t4n/flux-home"],
-      "flux": {
-        "fileMatch": ["\\.yaml$"]
-      }
+      "repositories": ["J0n4t4n/flux-home"]
     }
