@@ -27,6 +27,7 @@ spec:
 
     ingress:
       enabled: true
+      className: nginx
       hosts:
         - obsidian.jsteuernagel.de
       annotations:
