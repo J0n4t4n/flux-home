@@ -1,0 +1,17 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/upgrade.cattle.io/plan_v1.json
+apiVersion: upgrade.cattle.io/v1
+kind: Plan
+metadata:
+  name: k3s
+  namespace: system-upgrade
+spec:
+  version: "v1.25.9+k3s1"
+  serviceAccountName: system-upgrade
+  concurrency: 1
+  cordon: true
+  nodeSelector:
+    matchExpressions:
+      - { key: node-role.kubernetes.io/control-plane, operator: Exists }
+  upgrade:
+    image: rancher/k3s-upgrade
