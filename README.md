@@ -1,5 +1,7 @@
 # <img src="https://github.com/J0n4t4n/flux-home/assets/5023871/34af3d3f-8d8f-4a67-9c5e-6de8aa696916" width="48"> Flux-Home
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Welcome to the **flux-home** repository! This repository contains the Kubernetes manifests for my K3s Kubernetes cluster at home. It enables me to manage my cluster efficiently and automate the deployment of applications using various tools and services.
 
 ## 🔧 Tools Used
@@ -10,7 +12,7 @@ Welcome to the **flux-home** repository! This repository contains the Kubernetes
 
   1. External DNS (Cloudflare): Manages my external Cloudflare DNS records, allowing external access to my services.
 
-  2. Internal DNS (Active Directory via RF2136): Manages my internal Active Directory DNS records using RFC 2136 dynamic DNS updates. This enables internal access to services within my cluster.
+  2. Internal DNS (Active Directory via RFC2136): Manages my internal Active Directory DNS records using RFC 2136 dynamic DNS updates. This enables internal access to services within my cluster.
 
 - [FluxCD](https://fluxcd.io/): FluxCD is a GitOps operator that helps in automating the deployment and lifecycle management of Kubernetes applications. It synchronizes the cluster state with the Git repository, ensuring that the desired state is always maintained.
 
@@ -18,11 +20,15 @@ Welcome to the **flux-home** repository! This repository contains the Kubernetes
 
 - [Ingress-Nginx](https://github.com/kubernetes/ingress-nginx): Ingress-Nginx is an Ingress controller for Kubernetes that enables the routing of incoming traffic to your services. It provides features like SSL/TLS termination, load balancing, and path-based routing.
 
+- [Kured](https://kured.dev/): Kured is a tool used to automatically reboot nodes when a reboot is required.
+
 - [OnePassword Connect + Operator](https://github.com/1Password/onepassword-operator): The OnePassword Operator is a tool for integrating the 1Password secrets management platform with Kubernetes. It provides secure and convenient access to secrets and credentials for your applications. The Operator uses OnePassword Connect to fetch the secrets from 1Password.
 
 - [Rancher Longhorn](https://longhorn.io/): Longhorn provides a distributed block storage system for Kubernetes, offering replicated storage with high availability and data durability.
 
 - [Renovate](https://www.mend.io/renovate/): Renovate is an automated dependency management tool. It keeps track of the dependencies in your project and automatically updates them to their latest versions, ensuring that your cluster stays up-to-date and secure.
+
+- [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller): The System Upgrade Controller by Rancher is used to automatically upgrade K3s according to a Plan object.
 
 - [Tekton](https://tekton.dev/): Tekton is a flexible and scalable Kubernetes-native framework for building Continuous Integration/Continuous Delivery (CI/CD) systems. It allows you to define and run CI/CD pipelines as code, enabling automation and collaboration.
 
