@@ -8,6 +8,8 @@ Welcome to the **flux-home** repository! This repository contains the Kubernetes
 
 - [Cert Manager](https://cert-manager.io/): Cert Manager is a Kubernetes add-on that automates the management and provisioning of TLS certificates. It simplifies the process of obtaining and renewing certificates from certificate authorities like Let's Encrypt. It uses Cloudflare DNS to generate Let's Encrypt certificates, ensuring secure communication for both external and internal-only services.
 
+- [Cilium](https://cilium.io/): Cilium is a powerful networking and network security solution for Kubernetes. It serves as the Kubernetes CNI in my home cluster. In addition, Cilium is used as a Service IPAM to assign IP addresses to LoadBalancer services and publish them to my VyOS Router via BGP.
+
 - [External DNS](https://github.com/kubernetes-sigs/external-dns): External DNS is a Kubernetes add-on that automatically manages DNS records for your services and ingresses. It integrates with various DNS providers, ensuring that DNS entries are updated dynamically as your services and ingresses change. I have configured two instances of External DNS:
 
   1. External DNS (Cloudflare): Manages my external Cloudflare DNS records, allowing external access to my services.
@@ -27,6 +29,8 @@ Welcome to the **flux-home** repository! This repository contains the Kubernetes
 - [Rancher Longhorn](https://longhorn.io/): Longhorn provides a distributed block storage system for Kubernetes, offering replicated storage with high availability and data durability.
 
 - [Renovate](https://www.mend.io/renovate/): Renovate is an automated dependency management tool. It keeps track of the dependencies in your project and automatically updates them to their latest versions, ensuring that your cluster stays up-to-date and secure.
+
+- [Smarter Device Manager](https://gitlab.com/arm-research/smarter/smarter-device-manager): Smarter Device Manager is a tool used for managing devices in Kubernetes environments. It allows the assignment of `/dev/fuse` devices to containers using requests, enhancing control over device usage within the cluster.
 
 - [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller): The System Upgrade Controller by Rancher is used to automatically upgrade K3s according to a Plan object.
 
