@@ -22,6 +22,8 @@ Welcome to the **flux-home** repository! This repository contains the Kubernetes
 
 - [Ingress-Nginx](https://github.com/kubernetes/ingress-nginx): Ingress-Nginx is an Ingress controller for Kubernetes that enables the routing of incoming traffic to your services. It provides features like SSL/TLS termination, load balancing, and path-based routing.
 
+- [kube-vip](https://kube-vip.io/): kube-vip provides a highly available solution for the Kubernetes control plane. It ensures stable network connectivity and smooth operation of the control plane, contributing to the overall reliability and resilience of the Kubernetes cluster.
+
 - [Kured](https://kured.dev/): Kured is a tool used to automatically reboot nodes when a reboot is required.
 
 - [OnePassword Connect + Operator](https://github.com/1Password/onepassword-operator): The OnePassword Operator is a tool for integrating the 1Password secrets management platform with Kubernetes. It provides secure and convenient access to secrets and credentials for your applications. The Operator uses OnePassword Connect to fetch the secrets from 1Password.
