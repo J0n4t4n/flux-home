@@ -5,6 +5,10 @@ metadata:
   name: gitea-mariadb
   namespace: gitea
 spec:
+  inheritMetadata:
+    labels:
+      app.kubernetes.io/component: database
+
   rootPasswordSecretKeyRef:
     name: gitea-mariadb-secret
     key: root-password
