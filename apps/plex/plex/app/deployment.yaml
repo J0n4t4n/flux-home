@@ -37,9 +37,6 @@ spec:
               mountPath: /transcode
             - name: media
               mountPath: /data
-          securityContext:
-            runAsUser: 500
-            runAsGroup: 500
           resources:
             limits:
               gpu.intel.com/i915: 1
