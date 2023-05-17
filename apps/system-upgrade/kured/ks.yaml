@@ -5,6 +5,8 @@ metadata:
   name: kured
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: connect
   path: ./apps/system-upgrade/kured/app
   prune: true
   sourceRef:

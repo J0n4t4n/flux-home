@@ -5,6 +5,9 @@ metadata:
   name: tekton-tasks
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: tekton
+    - name: connect
   path: ./apps/tekton-tasks/tasks/tasks
   prune: true
   sourceRef:

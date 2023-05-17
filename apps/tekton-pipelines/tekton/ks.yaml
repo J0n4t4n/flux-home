@@ -5,6 +5,8 @@ metadata:
   name: tekton
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: ingress-nginx
   path: ./apps/tekton-pipelines/tekton/app
   prune: true
   sourceRef:
