@@ -7,7 +7,12 @@ metadata:
 spec:
   dependsOn:
     - name: cilium-config
-  path: ./deployments/multus-daemonset-thick.yml
+  path: ./deployments
+  ignore: |
+    # exclude all
+    /*
+    # include intended manifest
+    !multus-daemonset-thick.yml
   targetNamespace: kube-system
   prune: true
   sourceRef:
