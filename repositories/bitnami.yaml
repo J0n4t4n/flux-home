@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: multus
+  name: bitnami
   namespace: flux-system
 spec:
   type: "oci"
   interval: 24h
-  url: oci://registry-1.docker.io/bitnamicharts/multus-cni
+  url: oci://registry-1.docker.io/bitnamicharts
