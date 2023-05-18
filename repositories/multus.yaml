@@ -1,16 +1,10 @@
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: GitRepository
+kind: HelmRepository
 metadata:
   name: multus
   namespace: flux-system
 spec:
+  type: "oci"
   interval: 24h
-  url: https://github.com/k8snetworkplumbingwg/multus-cni.git
-  ref:
-    tag: v4.0.1
-  ignore: |
-    # exclude all
-    /*
-    # include deploy dir
-    !/deployments
+  url: oci://registry-1.docker.io/bitnamicharts/multus-cni

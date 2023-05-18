@@ -5,19 +5,11 @@ metadata:
   name: multus
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: cilium-config
-  path: ./deployments
-  ignore: |
-    # exclude all
-    /*
-    # include intended manifest
-    !multus-daemonset-thick.yml
-  targetNamespace: kube-system
+  path: ./apps/kube-system/multus/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: multus
+    name: flux-system
   wait: true
   interval: 30m
   retryInterval: 1m
