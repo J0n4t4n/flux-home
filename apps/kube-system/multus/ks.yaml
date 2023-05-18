@@ -5,6 +5,8 @@ metadata:
   name: multus
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cilium-config
   path: ./deployments/multus-daemonset-thick.yml
   targetNamespace: kube-system
   prune: true
