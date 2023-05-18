@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homeassistant
+spec:
+  selector:
+    matchLabels:
+      app: homeassistant
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+      annotations:
+        k8s.v1.cni.cncf.io/networks: bridge-net
+    spec:
+      containers:
+        - name: homeassistant
+          image: homeassistant/home-assistant:beta
+          ports:
+            - containerPort: 8123

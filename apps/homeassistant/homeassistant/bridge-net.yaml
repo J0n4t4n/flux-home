@@ -1,0 +1,15 @@
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: bridge-net
+  namespace: homeassistant
+spec:
+  config: '{
+    "name": "mynet",
+    "type": "macvlan",
+    "mode": "bridge",
+    "ipam": {
+    "type": "dhcp"
+    }
+    }'
