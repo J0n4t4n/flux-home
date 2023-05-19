@@ -9,7 +9,5 @@ spec:
     "name": "mynet",
     "type": "macvlan",
     "mode": "bridge",
-    "ipam": {
-    "type": "dhcp"
-    }
+    "ipam": {}
     }'
