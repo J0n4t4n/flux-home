@@ -7,6 +7,8 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     external-dns.alpha.kubernetes.io/my-target: external
     external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
+    external-dns.alpha.kubernetes.io/ingress-hostname-source: annotation-only
+    external-dns.alpha.kubernetes.io/hostname: homeassistant.jsteuernagel.de
 spec:
   ingressClassName: nginx
   rules:
