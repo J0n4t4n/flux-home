@@ -5,6 +5,7 @@ metadata:
   namespace: resilio-sync
 spec:
   type: LoadBalancer
+  externalTrafficPolicy: Local
   selector:
     app: resilio-sync
   ports:
