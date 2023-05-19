@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resilio-sync
+  namespace: resilio-sync
+spec:
+  selector:
+    matchLabels:
+      app: resilio-sync
+  template:
+    strategy:
+      type: Recreate
+    metadata:
+      labels:
+        app: resilio-sync
+    spec:
+      containers:
+        - name: resilio-sync
+          image: ghcr.io/linuxserver/resilio-sync
+          ports:
+            - containerPort: 8888
+            - containerPort: 55555
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Berlin
+            - name: UMASK_SET
+              value: "007"
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /sync/wd_elements_8tb/home
+              name: data
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: resilio-sync-config
+        - name: data
+          nfs:
+            server: 10.0.0.11
+            path: /tank/home

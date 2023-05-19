@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: resilio-sync
+  namespace: resilio-sync
+spec:
+  type: LoadBalancer
+  selector:
+    app: resilio-sync
+  ports:
+    - port: 8888
+      targetPort: 8888
+    - port: 55555
+      targetPort: 55555
