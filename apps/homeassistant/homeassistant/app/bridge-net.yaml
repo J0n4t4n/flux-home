@@ -9,5 +9,12 @@ spec:
     "name": "mynet",
     "type": "macvlan",
     "mode": "bridge",
-    "ipam": {}
+    "ipam": {
+    "type": "static",
+    "addresses": [
+    {
+    "address": "10.0.0.31/24"
+    }
+    ]
+    }
     }'
