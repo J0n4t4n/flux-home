@@ -47,8 +47,9 @@ spec:
             - name: media
               mountPath: /photos
               subPath: jonatan/Pictures
-            - name: quicksync
-              mountPath: /dev/dri
+          resources:
+            limits:
+              gpu.intel.com/i915: 1
       volumes:
         - name: cache
           persistentVolumeClaim:
@@ -58,6 +59,3 @@ spec:
             server: 10.0.0.11
             path: /tank/home
             readOnly: true
-        - name: quicksync
-          hostPath:
-            path: /dev/dri
