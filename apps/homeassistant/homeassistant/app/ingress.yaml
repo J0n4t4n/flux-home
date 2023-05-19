@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homeassistant
+  namespace: homeassistant
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/my-target: external
+    external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
+spec:
+  rules:
+    - host: homeassistant.jsteuernagel.de
+      http: &http_rules
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: homeassistant
+                port:
+                  number: 8123
+    - host: homeassistant.home.jsteuernagel.de
+      http: *http_rules
+  tls:
+    - hosts:
+        - homeassistant.jsteuernagel.de
+        - homeassistant.home.jsteuernagel.de
+      secretName: homeassistant-jsteuernagel-de-tls
