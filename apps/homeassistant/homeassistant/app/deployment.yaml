@@ -8,6 +8,8 @@ spec:
     matchLabels:
       app: homeassistant
   template:
+    strategy:
+      type: Recreate
     metadata:
       labels:
         app: homeassistant
