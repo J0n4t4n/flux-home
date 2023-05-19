@@ -8,6 +8,7 @@ metadata:
     external-dns.alpha.kubernetes.io/my-target: external
     external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
 spec:
+  ingressClassName: nginx
   rules:
     - host: homeassistant.jsteuernagel.de
       http: &http_rules
