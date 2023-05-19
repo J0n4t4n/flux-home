@@ -40,11 +40,11 @@ Welcome to the **flux-home** repository! This repository contains the Kubernetes
 
 ## 💻 Kubernetes Nodes
 
-| Name   | Node                | Processor           | Memory   | Storage |
-|--------|---------------------|---------------------|----------|---------|
-| Ananke | Prodesk 400 G5      | Intel Core i5-9500T | 16 GB    | 1TB SSD |
-| Nyx    | Prodesk 400 G3      | Intel Core i5-7500T | 8 GB     | 1TB SSD |
-| Ourea  | Prodesk 800 G2 (VM) | Intel Core i5-6500T | 8 GB     | 1TB SSD |
+| Name   | Node                  | Processor           | Memory | Storage |
+|--------|-----------------------|---------------------|--------|---------|
+| Ananke | Prodesk 400 G5        | Intel Core i5-9500T | 16 GB  | 1TB SSD |
+| Nyx    | Prodesk 400 G3        | Intel Core i5-7500T | 8 GB   | 1TB SSD |
+| Ourea  | Elitedesk 800 G2 (VM) | Intel Core i5-6500T | 8 GB   | 1TB SSD |
 
 These nodes collectively form the backbone of my home Kubernetes cluster, providing the necessary resources for running and managing containerized applications.
 
