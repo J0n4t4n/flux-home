@@ -13,5 +13,4 @@ spec:
   ports:
     - port: 1883
       targetPort: 1883
-  externalTrafficPolicy: Local
   type: LoadBalancer
