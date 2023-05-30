@@ -8,8 +8,11 @@ data:
   config.yml: |
     upstream:
       default:
-        - tcp-tls:1.1.1.1:853
-        - tcp-tls:1.0.0.1:853
+        # Digitalcourage dns3
+        - "tcp-tls:[2a01:4f8:251:554::2]:853"
+
+        # Mullvad
+        - "tcp-tls:[2a07:e340::2]:853"
     blocking:
       blackLists:
         ads:
