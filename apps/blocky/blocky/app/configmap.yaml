@@ -26,10 +26,10 @@ data:
         default:
           - ads
 
-      conditional:
-        fallbackUpstream: true
-        mapping:
-          jsteuernagel.de: 10.0.0.80
+    conditional:
+      fallbackUpstream: true
+      mapping:
+        jsteuernagel.de: 10.0.0.80
     port: 53
   whitelist.txt: |
     # Android Captive
