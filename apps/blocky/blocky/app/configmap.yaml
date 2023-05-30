@@ -6,13 +6,16 @@ metadata:
   namespace: blocky
 data:
   config.yml: |
+    bootstrapDns:
+      - upstream: tcp-tls:1.1.1.1:853
+      - upstream: tcp-tls:1.0.0.1:853
     upstream:
       default:
         # Digitalcourage dns3
-        - "tcp-tls:[2a01:4f8:251:554::2]:853"
+        - "tcp-tls:dns3.digitalcourage.de:853"
 
         # Mullvad
-        - "tcp-tls:[2a07:e340::2]:853"
+        - "tcp-tls:doh.mullvad.net:853"
     blocking:
       blackLists:
         ads:
