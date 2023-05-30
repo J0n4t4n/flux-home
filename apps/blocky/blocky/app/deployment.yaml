@@ -21,7 +21,7 @@ spec:
           image: spx01/blocky:v0.21
           args:
             - --config
-            - ./config/config.yml
+            - /app/config/config.yml
           env:
             - name: TZ
               value: Europe/Berlin
@@ -31,4 +31,4 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: config.yml
+            name: config
