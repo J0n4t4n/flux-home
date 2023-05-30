@@ -36,7 +36,10 @@ data:
     conditional:
       fallbackUpstream: true
       mapping:
-        jsteuernagel.de: 10.0.0.80
+        ad.jsteuernagel.de: 10.0.0.80
+        home.jsteuernagel.de: 10.0.0.80
+        gaia.jsteuernagel.de: 10.0.0.80
+        k8s.jsteuernagel.de: 10.0.0.80
     port: 53
   whitelist.txt: |
     # Android Captive
