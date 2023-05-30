@@ -11,7 +11,7 @@ spec:
     - localASN: 65001
       neighbors:
         - peerASN: 65000
-          peerAddress: 10.0.0.1/32
+          peerAddress: fd48:e380:751a::1/32
       serviceSelector:
         matchExpressions:
           - { key: somekey, operator: NotIn, values: ["never-used-value"] }
