@@ -153,6 +153,9 @@ data:
     # Qualtrics
     /(\\.|^)qualtrics\\.com$
 
+    # Crunch.io
+    /(\\.|^)crunch\\.io$
+
     # Reddit
     styles.redditmedia.com
     www.redditstatic.com
