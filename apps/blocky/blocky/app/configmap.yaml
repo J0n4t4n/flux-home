@@ -58,8 +58,8 @@ data:
     concierge.analytics.console.aws.a2z.com
 
     # Battle.Net
-    /*.blizzard.com/ #Battle.Net
-    /*.battle.net/ #Battle.Net
+    /blizzard.com/ #Battle.Net
+    /battle.net/ #Battle.Net
 
     # Discord
     cdn.discordapp.com
@@ -81,7 +81,7 @@ data:
     firestore.googleapis.com
 
     # Google Meet
-    /beacons?\\d*\\.gvt\\d\\.com$/
+    /beacons?\d*\.gvt\d\.com$/
 
     # Google Play
     android.clients.google.com
@@ -151,10 +151,10 @@ data:
     themoviedb.com
 
     # Qualtrics
-    /(\\.|^)qualtrics\\.com$
+    /qualtrics\.com$
 
     # Crunch.io
-    /(\\.|^)crunch\\.io$
+    /crunch\.io$
 
     # Reddit
     styles.redditmedia.com
@@ -162,9 +162,9 @@ data:
     reddit.map.fastly.net
     www.redditmedia.com
     reddit-uploaded-media.s3-accelerate.amazonaws.com
-    /[a-z]\\.thumbs\\.redditmedia\\.com/
-    /(\\.|^)redd\\.it$/
-    /(\\.|^)reddit\\.com$/
+    /[a-z]\.thumbs\.redditmedia\.com/
+    /redd\.it$/
+    /reddit\.com$/
 
     # Signal
     ud-chat.signal.org
@@ -222,8 +222,8 @@ data:
     # WhatsApp
     wa.me
     www.wa.me
-    /^whatsapp-cdn-shv-[0-9]{2}-[a-z]{3}[0-9]\\.fbcdn\\.net$/
-    /^((www|(w[0-9]\\.)?web|media((-[a-z]{3}|\\.[a-z]{4})[0-9]{1,2}-[0-9](\\.|-)(cdn|fna))?)\\.)?whatsapp\\.(com|net)$/
+    /^whatsapp-cdn-shv-[0-9]{2}-[a-z]{3}[0-9]\.fbcdn\.net$/
+    /^((www|(w[0-9]\.)?web|media((-[a-z]{3}|\.[a-z]{4})[0-9]{1,2}-[0-9](\.|-)(cdn|fna))?)\.)?whatsapp\.(com|net)$/
 
     # Other
     browser.pipe.aria.microsoft.com
