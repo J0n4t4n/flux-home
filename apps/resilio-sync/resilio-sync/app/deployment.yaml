@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: resilio-sync
-          image: ghcr.io/linuxserver/resilio-sync
+          image: ghcr.io/linuxserver/resilio-sync:2.7.3
           ports:
             - containerPort: 8888
             - containerPort: 55555
