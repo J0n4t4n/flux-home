@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: warrior
+  namespace: archiveteam
+  labels:
+    app: warrior
+spec:
+  selector:
+    matchLabels:
+      app: warrior
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: warrior
+    spec:
+      containers:
+        - image: atdr.meo.ws/archiveteam/warrior-dockerfile:latest
+          name: warrior
+          resources: {}
+          env:
+            - name: DOWNLOADER
+              value: home
+            - name: SELECTED_PROJECT
+              value: reddit
+            - name: CONCURRENT_ITEMS
+              value: "5"
+          ports:
+            - containerPort: 8001
