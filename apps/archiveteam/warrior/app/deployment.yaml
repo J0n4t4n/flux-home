@@ -23,7 +23,7 @@ spec:
           resources: {}
           env:
             - name: DOWNLOADER
-              value: home
+              value: J0n4t4n
             - name: SELECTED_PROJECT
               value: reddit
             - name: CONCURRENT_ITEMS
