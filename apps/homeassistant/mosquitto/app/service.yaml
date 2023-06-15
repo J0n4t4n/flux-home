@@ -14,3 +14,4 @@ spec:
     - port: 1883
       targetPort: 1883
   type: LoadBalancer
+  ipFamilyPolicy: PreferDualStack
