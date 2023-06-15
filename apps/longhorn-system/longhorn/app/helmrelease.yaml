@@ -27,4 +27,4 @@ spec:
       annotations:
         external-dns.alpha.kubernetes.io/my-target: internal
         cert-manager.io/cluster-issuer: letsencrypt-prod
-        nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/16
+        nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/16,fd48:e380:751a::/48
