@@ -12,7 +12,7 @@ data:
       listen-on-v6 { any; };
       listen-on { none; };
 
-      allow-recursion { fe80::/64; };
+      allow-recursion { any; };
       allow-transfer { none; };
       allow-update { none; };
 
