@@ -7,6 +7,8 @@ metadata:
 data:
   named.conf: |
     options {
+      directory "/var/named";
+
       listen-on-v6 { any; };
       listen-on { none; };
 

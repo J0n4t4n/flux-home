@@ -25,7 +25,12 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /etc/bind
+            - name: working-dir
+              mountPath: /var/named
       volumes:
         - name: config-volume
           configMap:
             name: config
+        - name: working-dir
+          emptyDir:
+            sizeLimit: 100Mi
