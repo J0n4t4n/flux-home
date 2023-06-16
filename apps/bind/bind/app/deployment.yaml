@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bind
+  namespace: bind
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: bind
+  template:
+    metadata:
+      labels:
+        app: bind
+    spec:
+      containers:
+        - name: bind
+          image: ubuntu/bind9:9.18-22.04_beta
+          env:
+            - name: TZ
+              value: Europe/Berlin
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/bind
+      volumes:
+        - name: config-volume
+          configMap:
+            name: config

@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: bind
+data:
+  named.conf: |
+    options {
+      listen-on-v6 { any; };
+      listen-on { none; };
+
+      allow-recursion { fe80::/64 };
+      allow-transfer { none; };
+      allow-update { none; };
+
+      max-ncache-ttl 30;
+
+      version none;
+      hostname none;
+      server-id none;
+      dns64 64:ff9b::/96 {};
+    }
