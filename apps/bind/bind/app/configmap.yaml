@@ -10,7 +10,7 @@ data:
       listen-on-v6 { any; };
       listen-on { none; };
 
-      allow-recursion { fe80::/64 };
+      allow-recursion { fe80::/64; };
       allow-transfer { none; };
       allow-update { none; };
 
@@ -19,5 +19,8 @@ data:
       version none;
       hostname none;
       server-id none;
-      dns64 64:ff9b::/96 {};
-    }
+      dns64 64:ff9b::/96 {
+        recursive-only yes;
+        mapped { !10/8; any; };
+      };
+    };
