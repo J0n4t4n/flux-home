@@ -17,6 +17,8 @@ spec:
     - protocol: UDP
       port: 53
       targetPort: 53
+      name: bind-udp
     - protocol: TCP
       port: 53
       targetPort: 53
+      name: bind-tcp
