@@ -16,6 +16,8 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: bridge-net
     spec:
+      strategy:
+        type: Recreate
       containers:
         - name: homeassistant
           image: homeassistant/home-assistant:2023.6.2
