@@ -7,6 +7,8 @@ spec:
   selector:
     matchLabels:
       app: homeassistant
+  strategy:
+    type: Recreate
   template:
     strategy:
       type: Recreate
@@ -16,8 +18,6 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: bridge-net
     spec:
-      strategy:
-        type: Recreate
       containers:
         - name: homeassistant
           image: homeassistant/home-assistant:2023.6.2
