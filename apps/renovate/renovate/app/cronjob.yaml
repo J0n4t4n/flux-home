@@ -12,7 +12,7 @@ spec:
       template:
         spec:
           containers:
-            - image: renovate/renovate:35.114.2
+            - image: renovate/renovate:35.155.0
               name: renovate-bot
               env:
                 - name: RENOVATE_PLATFORM
