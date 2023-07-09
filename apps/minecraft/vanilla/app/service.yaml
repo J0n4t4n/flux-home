@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    mc-router.itzg.me/externalServerName: vanilla.minecraft.k8s.jsteuernagel.de
+  labels:
+    service: minecraft-vanilla
+  name: minecraft-vanilla
+  namespace: minecraft
+spec:
+  ports:
+    - port: 25565
+      targetPort: 25565
+  selector:
+    app: minecraft-vanilla
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minecraft-vanilla-bluemap
+  namespace: minecraft
+spec:
+  selector:
+    app: minecraft-vanilla
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8100
+      targetPort: 8100
+      protocol: TCP
