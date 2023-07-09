@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-data
+  name: vanilla-data
   namespace: minecraft
 spec:
   storageClassName: longhorn
