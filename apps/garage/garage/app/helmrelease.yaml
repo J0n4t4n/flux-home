@@ -48,8 +48,9 @@ spec:
               name: garage
             patch:
               - op: add
-                path: "/metadata/annotations/io.cilium~1lb-ipam-ips"
-                value: "10.0.1.196,fd48:e380:751a:1::20"
+                path: "/metadata/annotations"
+                value:
+                  io.cilium~1lb-ipam-ips: "10.0.1.196,fd48:e380:751a:1::20"
               - op: add
                 path: "/spec/ipFamilyPolicy"
                 value: PreferDualStack
