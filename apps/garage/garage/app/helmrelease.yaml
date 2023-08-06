@@ -39,3 +39,17 @@ spec:
 
     service:
       type: LoadBalancer
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - target:
+              version: v1
+              kind: Service
+              name: garage
+            patch:
+              - op: add
+                path: "/metadata/annotations/io.cilium~1lb-ipam-ips"
+                value: "10.0.1.196,fd48:e380:751a:1::20"
+              - op: add
+                path: "/spec/ipFamilyPolicy"
+                value: PreferDualStack
