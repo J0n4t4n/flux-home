@@ -5,8 +5,8 @@ metadata:
   name: weave-gitops
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: ingress-nginx
+#  dependsOn:
+#    - name: ingress-nginx
   path: ./apps/flux-system/weave-gitops/app
   prune: true
   sourceRef:

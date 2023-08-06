@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: ingress-nginx
+#    - name: ingress-nginx
     - name: longhorn
   path: ./apps/obsidian/couchdb/app
   prune: true

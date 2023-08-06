@@ -5,8 +5,8 @@ metadata:
   name: cert-manager
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: ingress-nginx
+#  dependsOn:
+#    - name: ingress-nginx
   path: ./apps/cert-manager/cert-manager/app
   prune: true
   sourceRef:

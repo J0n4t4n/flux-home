@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: ingress-nginx
+#    - name: ingress-nginx
     - name: connect
   path: ./apps/gitea/gitea/app
   prune: true
