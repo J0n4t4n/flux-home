@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grocy
+  namespace: grocy
+spec:
+  selector:
+    matchLabels:
+      app: grocy
+  strategy:
+    type: Recreate
+  template:
+    strategy:
+      type: Recreate
+    metadata:
+      labels:
+        app: grocy
+    spec:
+      containers:
+        - name: grocy
+          image: lscr.io/linuxserver/grocy:4.0.3
+          ports:
+            - containerPort: 80
+          env:
+            - name: TZ
+              value: Europe/Berlin
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+          volumeMounts:
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: grocy-config
