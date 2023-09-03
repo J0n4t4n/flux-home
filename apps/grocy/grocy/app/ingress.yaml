@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: grocy.jsteuernagel.de
+    - host: grocy.k8s.jsteuernagel.de
       http:
         paths:
           - pathType: Prefix
@@ -22,5 +22,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - grocy.jsteuernagel.de
-      secretName: grocy-jsteuernagel-de-tls
+        - grocy.k8s.jsteuernagel.de
+      secretName: grocy-k8s-jsteuernagel-de-tls
