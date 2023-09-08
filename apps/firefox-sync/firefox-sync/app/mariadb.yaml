@@ -1,0 +1,125 @@
+---
+apiVersion: mariadb.mmontes.io/v1alpha1
+kind: MariaDB
+metadata:
+  name: firefox-sync-mariadb
+  namespace: firefox-sync
+spec:
+  rootPasswordSecretKeyRef:
+    name: firefox-sync-mariadb-secret
+    key: root-password
+
+  image:
+    repository: mariadb
+    tag: "11.1.2"
+    pullPolicy: IfNotPresent
+
+  port: 3306
+
+  volumeClaimTemplate:
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: longhorn
+    accessModes:
+      - ReadWriteOnce
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi
+---
+apiVersion: mariadb.mmontes.io/v1alpha1
+kind: Database
+metadata:
+  name: firefox-sync
+spec:
+  mariaDbRef:
+    name: firefox-sync-mariadb
+  characterSet: utf8
+  collate: utf8_general_ci
+---
+apiVersion: mariadb.mmontes.io/v1alpha1
+kind: Database
+metadata:
+  name: firefox-sync-user
+spec:
+  mariaDbRef:
+    name: firefox-sync-mariadb
+  characterSet: utf8
+  collate: utf8_general_ci
+---
+apiVersion: mariadb.mmontes.io/v1alpha1
+kind: User
+metadata:
+  name: firefox-sync
+spec:
+  mariaDbRef:
+    name: firefox-sync-mariadb
+  passwordSecretKeyRef:
+    name: firefox-sync-mariadb-secret
+    key: password
+  # This field is immutable and defaults to 10
+  maxUserConnections: 20
+  host: "%"
+---
+apiVersion: mariadb.mmontes.io/v1alpha1
+kind: User
+metadata:
+  name: firefox-sync-user
+spec:
+  mariaDbRef:
+    name: firefox-sync-mariadb
+  passwordSecretKeyRef:
+    name: firefox-sync-mariadb-secret
+    key: user-password
+  # This field is immutable and defaults to 10
+  maxUserConnections: 20
+  host: "%"
+---
+apiVersion: mariadb.mmontes.io/v1alpha1
+kind: Grant
+metadata:
+  name: firefox-sync-grant
+spec:
+  mariaDbRef:
+    name: firefox-sync-mariadb
+  privileges:
+    - "CREATE"
+    - "ALTER"
+    - "DROP"
+    - "INSERT"
+    - "UPDATE"
+    - "DELETE"
+    - "SELECT"
+    - "REFERENCES"
+  database: "firefox-sync"
+  table: "*"
+  username: firefox-sync
+  grantOption: true
+  host: "%"
+---
+apiVersion: mariadb.mmontes.io/v1alpha1
+kind: Grant
+metadata:
+  name: firefox-sync-user-grant
+spec:
+  mariaDbRef:
+    name: firefox-sync-mariadb
+  privileges:
+    - "CREATE"
+    - "ALTER"
+    - "DROP"
+    - "INSERT"
+    - "UPDATE"
+    - "DELETE"
+    - "SELECT"
+    - "REFERENCES"
+  database: "firefox-sync-user"
+  table: "*"
+  username: firefox-sync-user
+  grantOption: true
+  host: "%"

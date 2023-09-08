@@ -1,0 +1,116 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firefox-sync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: firefox-sync
+  template:
+    metadata:
+      labels:
+        app: firefox-sync
+        app.kubernetes.io/name: firefox-sync
+    spec:
+      containers:
+        - name: firefox-sync
+          image: mozilla/syncstorage-rs:0.13.6
+          env:
+          - name: RUST_LOG
+            value: trace
+          - name: DB_USERNAME
+            value: firefox-sync
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: firefox-sync-mariadb-secret
+                key: password
+          - name: DB_NAME
+            value: firefox-sync
+          - name: DB_HOST
+            value: mariadb
+          - name: SYNC_HUMAN_LOGS
+            value: "1"
+          - name: SYNC_SYNCSTORAGE__DATABASE_URL
+            value: mysql://$(DB_USERNAME):$(DB_PASSWORD)@$(DB_HOST):3306/$(DB_NAME)
+          - name: SYNC_SYNCSTORAGE__RUN_MIGRATIONS
+            value: "true"
+          - name: SYNC_HOST
+            value: 0.0.0.0
+          - name: SYNC_MASTER_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: firefox-sync-sync-secret
+                key: password
+          - name: SYNC_SYNCSTORAGE__HOST
+            value: 0.0.0.0
+          - name: SYNC_SYNCSTORAGE__MASTER_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: firefox-sync-sync-secret
+                key: password
+          - name: SYNC_TOKENSERVER__ENABLED
+            value: "true"
+          - name: SYNC_TOKENSERVER__RUN_MIGRATIONS
+            value: "true"
+          - name: SYNC_TOKENSERVER__NODE_TYPE
+            value: mysql
+          - name: USER_DB_USERNAME
+            value: firefox-sync-user
+          - name: USER_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: firefox-sync-mariadb-secret
+                key: user-password
+          - name: USER_DB_NAME
+            value: firefox-sync-user
+          - name: SYNC_TOKENSERVER__DATABASE_URL
+            value: mysql://$(USER_DB_USERNAME):$(USER_DB_PASSWORD)@$(DB_HOST):3306/$(USER_DB_NAME)
+          - name: SYNC_TOKENSERVER__FXA_EMAIL_DOMAIN
+            value: api.accounts.firefox.com
+          - name: SYNC_TOKENSERVER__FXA_OAUTH_SERVER_URL
+            value: https://oauth.accounts.firefox.com/v1
+          - name: SYNC_TOKENSERVER__FXA_METRICS_HASH_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: firefox-sync-sync-secret
+                key: user-password
+          - name: SYNC_TOKENSERVER__ADDITIONAL_BLOCKING_THREADS_FOR_FXA_REQUESTS
+            value: "10"
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          resources:
+            limits:
+              memory: 200Mi
+            requests:
+              cpu: '1m'
+              memory: 200Mi
+          livenessProbe:
+            httpGet:
+              path: "/__heartbeat__"
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 8
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: "/__heartbeat__"
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 8
+            periodSeconds: 10
+            successThreshold: 5
+            failureThreshold: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 100%
