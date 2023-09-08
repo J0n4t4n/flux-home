@@ -31,7 +31,7 @@ spec:
           - name: DB_NAME
             value: firefox-sync
           - name: DB_HOST
-            value: mariadb
+            value: firefox-sync-mariadb
           - name: SYNC_HUMAN_LOGS
             value: "1"
           - name: SYNC_SYNCSTORAGE__DATABASE_URL
