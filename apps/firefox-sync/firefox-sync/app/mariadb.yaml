@@ -36,6 +36,7 @@ apiVersion: mariadb.mmontes.io/v1alpha1
 kind: Database
 metadata:
   name: firefox-sync
+  namespace: firefox-sync
 spec:
   mariaDbRef:
     name: firefox-sync-mariadb
@@ -46,6 +47,7 @@ apiVersion: mariadb.mmontes.io/v1alpha1
 kind: Database
 metadata:
   name: firefox-sync-user
+  namespace: firefox-sync
 spec:
   mariaDbRef:
     name: firefox-sync-mariadb
@@ -56,6 +58,7 @@ apiVersion: mariadb.mmontes.io/v1alpha1
 kind: User
 metadata:
   name: firefox-sync
+  namespace: firefox-sync
 spec:
   mariaDbRef:
     name: firefox-sync-mariadb
@@ -70,6 +73,7 @@ apiVersion: mariadb.mmontes.io/v1alpha1
 kind: User
 metadata:
   name: firefox-sync-user
+  namespace: firefox-sync
 spec:
   mariaDbRef:
     name: firefox-sync-mariadb
@@ -84,6 +88,7 @@ apiVersion: mariadb.mmontes.io/v1alpha1
 kind: Grant
 metadata:
   name: firefox-sync-grant
+  namespace: firefox-sync
 spec:
   mariaDbRef:
     name: firefox-sync-mariadb
@@ -106,6 +111,7 @@ apiVersion: mariadb.mmontes.io/v1alpha1
 kind: Grant
 metadata:
   name: firefox-sync-user-grant
+  namespace: firefox-sync
 spec:
   mariaDbRef:
     name: firefox-sync-mariadb
