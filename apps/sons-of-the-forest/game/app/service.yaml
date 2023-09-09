@@ -11,13 +11,16 @@ metadata:
   namespace: sons-of-the-forest
 spec:
   ports:
-    - port: 8766
+    - name: "8766"
+      port: 8766
       targetPort: 8766
       protocol: UDP
-    - port: 27016
+    - name: "27016"
+      port: 27016
       targetPort: 27016
       protocol: UDP
-    - port: 9700
+    - name: "9700"
+      port: 9700
       targetPort: 9700
       protocol: UDP
   selector:
