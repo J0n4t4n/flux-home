@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: sons-of-the-forest
+  annotations:
+    external-dns.alpha.kubernetes.io/my-target: internal
+    external-dns.alpha.kubernetes.io/hostname: "sotf.k8s.jsteuernagel.de."
+  name: sons-of-the-forest
+  namespace: sons-of-the-forest
+spec:
+  ports:
+    - port: 8766
+      targetPort: 8766
+      protocol: UDP
+    - port: 27016
+      targetPort: 27016
+      protocol: UDP
+    - port: 9700
+      targetPort: 9700
+      protocol: UDP
+  selector:
+    app: sons-of-the-forest
+  type: LoadBalancer

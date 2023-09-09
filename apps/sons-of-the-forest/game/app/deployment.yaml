@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sons-of-the-forest
+  labels:
+    app: sons-of-the-forest
+  namespace: sons-of-the-forest
+spec:
+  serviceName: sons-of-the-forest
+  selector:
+    matchLabels:
+      app: sons-of-the-forest
+  template:
+    metadata:
+      labels:
+        app: sons-of-the-forest
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              preference:
+                matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - ananke
+      containers:
+        - name: sons-of-the-forest
+          image: jammsen/sons-of-the-forest-dedicated-server:latest
+          env:
+            - name: ALWAYS_UPDATE_ON_START
+              value: "1"
+          volumeMounts:
+            - mountPath: /steamcmd
+              name: steamcmd
+            - mountPath: /sonsoftheforest
+              name: game
+            - mountPath: /winedata
+              name: winedata
+      volumes:
+        - name: steamcmd
+          emptyDir:
+            sizeLimit: 500Mi
+        - name: game
+          persistentVolumeClaim:
+            claimName: game
+        - name: winedata
+          persistentVolumeClaim:
+            claimName: winedata

@@ -1,0 +1,18 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: sons-of-the-forest
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: minecraft-common
+  path: ./apps/sons-of-the-forest/game/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
