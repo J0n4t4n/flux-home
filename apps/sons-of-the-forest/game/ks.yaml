@@ -5,8 +5,6 @@ metadata:
   name: sons-of-the-forest
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: minecraft-common
   path: ./apps/sons-of-the-forest/game/app
   prune: true
   sourceRef:
