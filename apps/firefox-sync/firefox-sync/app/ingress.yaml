@@ -1,0 +1,35 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: firefox-sync
+  namespace: firefox-sync
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/my-target: external
+    external-dns.alpha.kubernetes.io/target: dyn.jsteuernagel.de
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - firefox-sync.jsteuernagel.de
+      secretName: firefox-sync-jsteuernagel-de-tls
+  rules:
+    - host: firefox-sync.jsteuernagel.de
+      http:
+        paths:
+          - pathType: Prefix
+            path: /token(/|$)(.*)
+            backend:
+              service:
+                name: firefox-sync
+                port:
+                  number: 8000
+          - pathType: Prefix
+            path: /()(.*)
+            backend:
+              service:
+                name: firefox-sync
+                port:
+                  number: 8000
