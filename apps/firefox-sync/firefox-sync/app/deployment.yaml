@@ -95,20 +95,8 @@ spec:
               path: "/__heartbeat__"
               port: http
               scheme: HTTP
-            initialDelaySeconds: 30
-            timeoutSeconds: 8
-            periodSeconds: 10
+            initialDelaySeconds: 5
             successThreshold: 1
-            failureThreshold: 3
-          readinessProbe:
-            httpGet:
-              path: "/__heartbeat__"
-              port: http
-              scheme: HTTP
-            initialDelaySeconds: 30
-            timeoutSeconds: 8
-            periodSeconds: 10
-            successThreshold: 5
             failureThreshold: 3
   strategy:
     type: RollingUpdate
