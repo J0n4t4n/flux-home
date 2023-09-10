@@ -93,19 +93,10 @@ spec:
   mariaDbRef:
     name: firefox-sync-mariadb
   privileges:
-    - "CREATE"
-    - "ALTER"
-    - "DROP"
-    - "INSERT"
-    - "UPDATE"
-    - "DELETE"
-    - "SELECT"
-    - "REFERENCES"
+    - "ALL"
   database: "firefox-sync"
   table: "*"
   username: firefox-sync
-  grantOption: true
-  host: "%"
 ---
 apiVersion: mariadb.mmontes.io/v1alpha1
 kind: Grant
@@ -116,16 +107,7 @@ spec:
   mariaDbRef:
     name: firefox-sync-mariadb
   privileges:
-    - "CREATE"
-    - "ALTER"
-    - "DROP"
-    - "INSERT"
-    - "UPDATE"
-    - "DELETE"
-    - "SELECT"
-    - "REFERENCES"
+    - "ALL"
   database: "firefox-sync-user"
   table: "*"
   username: firefox-sync-user
-  grantOption: true
-  host: "%"
