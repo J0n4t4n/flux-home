@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: plex
-          image: plexinc/pms-docker:1.32.3.7192-7aa441827
+          image: plexinc/pms-docker:1.32.5.7349-8f4248874
           env:
             - name: TZ
               value: Europe/Berlin
