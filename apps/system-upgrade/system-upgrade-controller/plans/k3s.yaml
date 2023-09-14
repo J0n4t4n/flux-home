@@ -6,7 +6,7 @@ metadata:
   name: k3s
   namespace: system-upgrade
 spec:
-  version: "v1.25.11+k3s1"
+  version: " v1.26.8+k3s1"
   serviceAccountName: system-upgrade
   concurrency: 1
   cordon: true
