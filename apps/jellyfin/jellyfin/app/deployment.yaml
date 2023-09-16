@@ -39,6 +39,7 @@ spec:
           securityContext:
             runAsUser: 500
             runAsGroup: 500
+            fsGroup: 500
           livenessProbe:
             httpGet:
               path: /health
