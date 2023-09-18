@@ -16,6 +16,12 @@ spec:
       labels:
         app: jellyfin
     spec:
+      securityContext:
+        runAsUser: 500
+        runAsGroup: 500
+        fsGroup: 500
+        supplementalGroups:
+          - 106 # = render group
       containers:
         - name: jellyfin
           image: jellyfin/jellyfin:latest # TODO: Figure out the proper version
@@ -36,12 +42,6 @@ spec:
           resources:
             limits:
               gpu.intel.com/i915: 1
-          securityContext:
-            runAsUser: 500
-            runAsGroup: 500
-            fsGroup: 500
-            supplementalGroups:
-              - 106 # = render group
           livenessProbe:
             httpGet:
               path: /health
