@@ -40,6 +40,8 @@ spec:
             runAsUser: 500
             runAsGroup: 500
             fsGroup: 500
+            supplementalGroups:
+              - 106 # = render group
           livenessProbe:
             httpGet:
               path: /health
