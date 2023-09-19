@@ -16,6 +16,8 @@ spec:
         namespace: flux-system
       interval: 12h
   values:
+    image:
+      tag: "v4.0.2-thick"
     cni:
       image:
         repository: ghcr.io/onedr0p/cni-plugins
@@ -23,6 +25,5 @@ spec:
 
       paths:
         config: /etc/cni/net.d
-        bin: /opt/cni/bin
 
       version: "0.3.1"
