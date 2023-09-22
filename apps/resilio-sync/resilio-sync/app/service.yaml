@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: resilio-sync
   namespace: resilio-sync
+  annotations:
+    io.cilium/lb-ipam-ips: "10.0.1.186,fd48:e380:751a:1::186"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
