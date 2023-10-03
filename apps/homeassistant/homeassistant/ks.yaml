@@ -5,8 +5,6 @@ metadata:
   name: homeassistant
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: multus
   path: ./apps/homeassistant/homeassistant/app
   prune: true
   sourceRef:
