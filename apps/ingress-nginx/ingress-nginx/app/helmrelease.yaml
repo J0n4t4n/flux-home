@@ -17,8 +17,8 @@ spec:
       interval: 12h
   values:
     controller:
-      kind: DaemonSet
-      #replicaCount: 3
+      kind: Deployment
+      replicaCount: 2
       service:
         annotations:
           io.cilium/lb-ipam-ips: 10.0.1.10,fd48:e380:751a:1::10

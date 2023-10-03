@@ -5,7 +5,7 @@ metadata:
   name: blocky
   namespace: blocky
 spec:
-  replicas: 3
+  replicas: 2
   strategy:
     type: Recreate
   selector:
