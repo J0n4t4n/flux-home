@@ -15,9 +15,8 @@ spec:
     metadata:
       labels:
         app: homeassistant
-      annotations:
-        k8s.v1.cni.cncf.io/networks: bridge-net
     spec:
+      hostNetwork: true
       containers:
         - name: homeassistant
           image: homeassistant/home-assistant:2023.9.3
