@@ -25,5 +25,7 @@ spec:
         type: "LoadBalancer"
         externalTrafficPolicy: Local
         ipFamilyPolicy: PreferDualStack
+      config:
+        allow-snippet-annotations: true
     tcp:
       "22": "gitea/gitea-ssh:22"
