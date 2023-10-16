@@ -26,5 +26,14 @@ spec:
         externalTrafficPolicy: Local
         ipFamilyPolicy: PreferDualStack
       allowSnippetAnnotations: true
+      topologySpreadConstraints:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: '{{ include "ingress-nginx.name" . }}'
+            app.kubernetes.io/instance: '{{ .Release.Name }}'
+            app.kubernetes.io/component: controller
+        topologyKey: kubernetes.io/hostname
+        maxSkew: 1
+        whenUnsatisfiable: DoNotSchedule
     tcp:
       "22": "gitea/gitea-ssh:22"
