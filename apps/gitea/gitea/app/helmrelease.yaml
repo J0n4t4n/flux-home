@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: gitea
-      version: "8.3.0" # v9 Upgrade requires manual changes for HA readiness
+      version: "9.5.0"
       sourceRef:
         kind: HelmRepository
         name: gitea
@@ -39,6 +39,11 @@ spec:
     persistence:
       size: 10Gi
       storageClass: longhorn
+      # Because of migration from Chart v8
+      # Default is now RWX volume, this keeps the old RWO
+      mount: true
+      create: false
+      claimName: data-gitea-0
 
     gitea:
       admin:
@@ -61,13 +66,27 @@ spec:
           ENABLED: true
         service:
           DISABLE_REGISTRATION: true
+
+        # Workaround for https://gitea.com/gitea/helm-chart/issues/468
+        # Can be removed when that issue is fixed
+        session:
+          PROVIDER: redis-cluster
+          PROVIDER_CONFIG: redis+cluster://:gitea@gitea-redis-cluster-headless.gitea.svc.cluster.local:6379/0?pool_size=100&idle_timeout=180s&
+        cache:
+          ENABLED: true
+          ADAPTER: redis-cluster
+          HOST: redis+cluster://:gitea@gitea-redis-cluster-headless.gitea.svc.cluster.local:6379/0?pool_size=100&idle_timeout=180s&
+        queue:
+          TYPE: redis
+          CONN_STR: redis+cluster://:gitea@gitea-redis-cluster-headless.gitea.svc.cluster.local:6379/0?pool_size=100&idle_timeout=180s&
       additionalConfigFromEnvs:
-        - name: ENV_TO_INI__DATABASE__PASSWD
+        # Migrated from old ENV_TO_INI__ Syntax to GITEA__
+        - name: GITEA__DATABASE__PASSWD
           valueFrom:
             secretKeyRef:
               name: gitea-mariadb-secret
               key: password
-        - name: ENV_TO_INI__MAILER__PASSWD
+        - name: GITEA__MAILER__PASSWD
           valueFrom:
             secretKeyRef:
               name: gitea-smtp-secret
