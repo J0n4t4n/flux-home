@@ -109,3 +109,7 @@ spec:
 
     postgresql-ha:
       enabled: false
+
+    redis-cluster:
+      persistence:
+        storageClass: local-path
