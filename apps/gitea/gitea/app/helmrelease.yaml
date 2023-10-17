@@ -109,7 +109,3 @@ spec:
 
     postgresql-ha:
       enabled: false
-
-    redis-cluster:
-      cluster:
-        nodes: 3
