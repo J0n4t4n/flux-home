@@ -37,6 +37,7 @@ spec:
           securityContext:
             runAsUser: 1883
             runAsGroup: 1883
+            fsGroup: 1883
       volumes:
         - name: config
           configMap:
@@ -44,6 +45,7 @@ spec:
         - name: password
           secret:
             secretName: mosquitto-passwordfile
+            defaultMode: 256
         - name: data
           persistentVolumeClaim:
             claimName: mosquitto-data
