@@ -1,7 +1,0 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: tekton-tasks
-  labels:
-    kustomize.toolkit.fluxcd.io/prune: disabled
