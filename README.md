@@ -1,6 +1,12 @@
-# <img src="https://github.com/J0n4t4n/flux-home/assets/5023871/34af3d3f-8d8f-4a67-9c5e-6de8aa696916" width="48"> Flux-Home
+# <img src="https://github.com/J0n4t4n/flux-home/assets/5023871/34af3d3f-8d8f-4a67-9c5e-6de8aa696916" width="48"> DEPRECATED: Flux-Home
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+# Deprecation notice
+
+    This repository has been deprecated, as I've moved my home setup over to NixOS.
+    Running a home cluster was a great opportunity to learn about the inner workings and challenges of Kubernetes, and I highly recommend doing it for learning purposes.
+    Sadly, after the learning phase, it turned out to be more difficult to maintain and the benefits of high availability don't create a lot of benefit in a home environment.
 
 Welcome to the **flux-home** repository! This repository contains the Kubernetes manifests for my K3s Kubernetes cluster at home. It enables me to manage my cluster efficiently and automate the deployment of applications using various tools and services.
 
